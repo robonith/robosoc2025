@@ -1,18 +1,31 @@
-import { Routes, Route } from 'react-router-dom'
-import Header from './components/header'
-import Footer from './components/footer'
-import SmoothScrollProvider from './components/SmoothScrollProvider'
-import Home from './home'
-import AboutUs from './aboutus'
-import Projects from './projects'
-import Members from './members'
-import Achievements from './achievement'
-import Inventory from './inventory'
-import ContactUs from './contactus'
-import AdminPanel from './admin'
-
+import React, { useState, useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
+import Header from "./components/header";
+import Footer from "./components/footer";
+import SmoothScrollProvider from "./components/SmoothScrollProvider";
+import Home from "./home";
+import AboutUs from "./aboutus";
+import Projects from "./projects";
+import Achievements from "./achievement";
+import Inventory from "./inventory";
+import ContactUs from "./contactus";
+import AdminPanel from "./admin";
+import LineFollowerLoader from "./components/LineFollowerLoader";
+import Members from "./members"; // don’t forget to import
 
 function App() {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulate loading delay (replace with actual checks if needed)
+    const timer = setTimeout(() => setLoading(false), 3000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (loading) {
+    return <LineFollowerLoader />;
+  }
+
   return (
     <SmoothScrollProvider>
       <div className="App">
@@ -34,7 +47,7 @@ function App() {
         </div>
       </div>
     </SmoothScrollProvider>
-  )
+  );
 }
 
-export default App
+export default App;

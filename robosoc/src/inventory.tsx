@@ -1,132 +1,145 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-
 import SEO from './components/SEO'
 import { breadcrumbSchema } from './utils/structuredData'
 
-// Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger)
 
+const POSTER =
+  'https://res.cloudinary.com/dkqaesntp/image/upload/v1756899649/Biggest_Fresher_Workshop_1_nuy4sx.png'
+const GOOGLE_FORM =
+  'https://docs.google.com/forms/d/e/1FAIpQLScDfk7nYUGrsX7tpfXm16PEA8f_0fzZfj1yLF0QPSpJWfh5cQ/viewform'
+
 const Inventory: React.FC = () => {
-  const titleRef = useRef<HTMLDivElement>(null);
-  const contentRef = useRef<HTMLDivElement>(null);
-  const spinnerRef = useRef<SVGSVGElement>(null);
-  const textRef = useRef<HTMLDivElement>(null);
+  const [open, setOpen] = useState(false)
+  const titleRef = useRef<HTMLDivElement>(null)
+  const cardRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    const title = titleRef.current;
-    const content = contentRef.current;
-    const spinner = spinnerRef.current;
-    const text = textRef.current;
+    const title = titleRef.current
+    const card = cardRef.current
+    if (!title || !card) return
 
-    if (!title || !content || !spinner || !text) return;
+    gsap.set([title, card], { opacity: 0, y: 40, scale: 0.95 })
 
-    // Set initial states (keeping animate-spin working by only animating opacity and scale)
-    gsap.set(title, { opacity: 0, y: 50, scale: 0.9 });
-    gsap.set(content, { opacity: 0, y: 30 });
-    gsap.set(spinner, { opacity: 0, scale: 0 }); // Don't interfere with animate-spin rotation
-    gsap.set(text, { opacity: 0, y: 20 });
-
-    // Title animation
     gsap.to(title, {
       opacity: 1,
       y: 0,
       scale: 1,
       duration: 1.2,
-      ease: "power3.out",
+      ease: 'power3.out',
       scrollTrigger: {
         trigger: title,
-        start: "top 90%",
-        end: "bottom 10%",
-        toggleActions: "play none none reverse"
+        start: 'top 90%',
+        end: 'bottom 10%',
+        toggleActions: 'play none none reverse'
       }
-    });
+    })
 
-    // Content container fade-in
-    gsap.to(content, {
+    gsap.to(card, {
       opacity: 1,
       y: 0,
-      duration: 0.8,
-      ease: "power2.out",
-      scrollTrigger: {
-        trigger: content,
-        start: "top 85%",
-        end: "bottom 15%",
-        toggleActions: "play none none reverse"
-      }
-    });
-
-    // Spinner animation (only opacity and scale to preserve animate-spin)
-    gsap.to(spinner, {
-      opacity: 1,
       scale: 1,
-      duration: 0.6,
+      duration: 1,
       delay: 0.3,
-      ease: "back.out(1.7)",
+      ease: 'power2.out',
       scrollTrigger: {
-        trigger: content,
-        start: "top 85%",
-        end: "bottom 15%",
-        toggleActions: "play none none reverse"
+        trigger: card,
+        start: 'top 85%',
+        end: 'bottom 15%',
+        toggleActions: 'play none none reverse'
       }
-    });
+    })
 
-    // Text fade-in with bounce
-    gsap.to(text, {
-      opacity: 1,
-      y: 0,
-      duration: 0.5,
-      delay: 0.6,
-      ease: "bounce.out",
-      scrollTrigger: {
-        trigger: content,
-        start: "top 85%",
-        end: "bottom 15%",
-        toggleActions: "play none none reverse"
-      }
-    });
-
-    // Cleanup function
     return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-    };
-  }, []);
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill())
+    }
+  }, [])
 
   return (
     <>
-      <SEO 
+      <SEO
         title="Campaigns - RoboSoc NITH | Our Initiatives & Events"
         description="Explore RoboSoc NITH's ongoing campaigns, initiatives, and events. Join our mission to promote robotics education and innovation at National Institute of Technology Hamirpur."
         keywords="RoboSoc campaigns, NIT Hamirpur events, robotics initiatives, technology events, student activities, innovation programs, robotics awareness"
         url="/Campaign's"
         structuredData={breadcrumbSchema([
-          { name: "Home", url: "https://robosoc-nith.com/" },
-          { name: "Campaigns", url: "https://robosoc-nith.com/Campaign's" }
+          { name: 'Home', url: 'https://robosoc-nith.com/' },
+          { name: 'Campaigns', url: "https://robosoc-nith.com/Campaign's" }
         ])}
       />
-      <div className="inventory min-h-screen py-6 sm:py-10 lg:py-16 px-4 sm:px-6 lg:px-8 relative">
-  
-      
-      <div className="relative z-10">
-      <div ref={titleRef} className="max-w-6xl mx-auto mb-8 sm:mb-12 lg:mb-16">
-        <div className='flex items-center w-full gap-2 sm:gap-4 mb-8 sm:mb-10 lg:mb-12'>
-          <div className='bg-white h-8 sm:h-12 lg:h-16 flex-1 rounded-sm shadow-lg'></div>
-          <h1 className='text-2xl sm:text-4xl md:text-6xl lg:text-8xl xl:text-9xl font-bold text-white tracking-wider text-center px-2 sm:px-4 lg:px-8'>
-            Campaign's
-          </h1>
-          <div className='bg-white h-8 sm:h-12 lg:h-16 w-16 sm:w-24 lg:w-32 rounded-sm shadow-lg flex items-center justify-center'>
+
+      <div className="inventory min-h-screen py-10 px-4 sm:px-6 lg:px-8 flex justify-center items-center">
+        <div className="w-full max-w-md">
+          <div ref={titleRef} className="text-center mb-8">
+            <h1 className="text-3xl sm:text-4xl font-bold text-white tracking-wide">
+              Campaign's
+            </h1>
           </div>
+
+      
+          <div
+            ref={cardRef}
+            className="relative bg-black/70 backdrop-blur-lg rounded-2xl border border-white/10 shadow-xl shadow-black/50 overflow-hidden cursor-pointer"
+            onClick={() => setOpen(true)}
+          >
+            <img
+              src={POSTER}
+              alt="RoboSoc Campaign Banner"
+              className="w-full object-cover"
+            />
+
+            <div className="absolute bottom-3 right-3 flex flex-col sm:flex-row gap-2">
+              <a
+                href={GOOGLE_FORM}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-4 py-2 bg-white text-black text-sm font-semibold rounded-lg shadow-md hover:bg-gray-200 transition"
+                onClick={(e) => e.stopPropagation()}
+              >
+                Register Now
+              </a>
+              <button
+                disabled
+                className="px-4 py-2 bg-gray-700 text-gray-300 text-sm font-semibold rounded-lg shadow-md cursor-not-allowed"
+                onClick={(e) => e.stopPropagation()}
+              >
+                Stay tuned – First Glimpse
+              </button>
+            </div>
+          </div>
+
+          {open && (
+            <div className="fixed inset-0 z-50 bg-black/90 backdrop-blur-sm flex items-center justify-center">
+              <div className="relative w-full h-full flex items-center justify-center">
+                <img
+                  src={POSTER}
+                  alt="RoboSoc Campaign Poster Large"
+                  className="w-full h-full object-contain"
+                />
+
+                <button
+                  onClick={() => setOpen(false)}
+                  aria-label="Close"
+                  className="absolute top-5 right-5 text-white bg-black/60 hover:bg-black/80 p-2 rounded-full text-lg font-bold"
+                >
+                  ✕
+                </button>
+
+              
+                <a
+                  href={GOOGLE_FORM}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="absolute bottom-6 right-6 px-5 py-2 bg-white text-black font-semibold rounded-lg shadow-md hover:bg-gray-200 transition"
+                >
+                  Register Now
+                </a>
+              </div>
+            </div>
+          )}
         </div>
-        <div ref={contentRef} className="flex flex-col items-center justify-center py-12 bg-black/60 backdrop-blur-xl rounded-3xl border border-white/10 shadow-2xl shadow-black/50">
-          <svg ref={spinnerRef} className="animate-spin h-16 w-16 text-white mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"></path>
-          </svg>
-          <div ref={textRef} className="text-white text-xl font-semibold tracking-wide animate-pulse">Work in Progress</div>
-        </div>
-      </div>
-      </div>
       </div>
     </>
   )
