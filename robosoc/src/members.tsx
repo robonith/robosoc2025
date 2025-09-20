@@ -228,7 +228,7 @@ const Members: React.FC = () => {
                             </svg>
                           </div>
                         </a>
-                        <a href={member.insta} className="group/icon">
+                        <a href={member.instagram} className="group/icon">
                           <div className="w-8 h-8 bg-gradient-to-br from-pink-500 to-purple-600 rounded-lg flex items-center justify-center hover:from-pink-400 hover:to-purple-500 transition-all duration-300 shadow-md hover:shadow-lg">
                             {/* Instagram SVG */}
                             <svg className="w-5 h-5 fill-white group-hover/icon:scale-110 transition-all duration-300" viewBox="0 0 24 24">
