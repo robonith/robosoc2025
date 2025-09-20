@@ -8,10 +8,10 @@ interface Member extends Models.Document {
   post: string;
   profilepic: string;
   linkedin?: string;
-  insta?: string;  // Changed from instagram to insta to match Appwrite
+  insta?: string;  
   github?: string;
   techstack?: string[];
-  year?: number; // Added year property
+  year?: number; 
 }
 
 interface MembersByYear {
@@ -21,7 +21,7 @@ interface MembersByYear {
   year1: Member[];
 }
 
-const SESSION_TIMEOUT = 10 * 60 * 1000; // 10 minutes
+const SESSION_TIMEOUT = 10 * 60 * 1000; 
 const DEMO_USER = { username: 'admin', password: 'robosoc2025' };
 
 const AdminPanel: React.FC = () => {
@@ -33,7 +33,7 @@ const AdminPanel: React.FC = () => {
   const [loginError, setLoginError] = useState('');
   const sessionTimeoutRef = useRef<number | null>(null);
   const lastActivityRef = useRef(Date.now());
-  // Session timeout logic
+  
   useEffect(() => {
     if (!isLoggedIn) return;
     const handleActivity = () => {
@@ -41,7 +41,7 @@ const AdminPanel: React.FC = () => {
     };
     window.addEventListener('mousemove', handleActivity);
     window.addEventListener('keydown', handleActivity);
-    // Timer to check for timeout
+  
     const checkTimeout = () => {
       if (Date.now() - lastActivityRef.current > SESSION_TIMEOUT) {
         handleLogout();
@@ -95,45 +95,45 @@ const AdminPanel: React.FC = () => {
   const [memberToDelete, setMemberToDelete] = useState<Member | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // Form state for adding/editing members
+ 
   const [formData, setFormData] = useState({
     name: '',
     post: '',
     profilepic: '',
     linkedin: '',
-    insta: '',  // Changed from instagram to insta
+    insta: '', 
     github: '',
     techstack: [] as string[],
-    year: 1 // Default to 1st year
+    year: 1 
   });
 
   useEffect(() => {
     fetchAllMembers();
   }, []);
 
-  // Collection IDs mapped to years
+
   const getCollectionId = (year: number): string => {
     switch (year) {
       case 4: return '689cefca0001449d5204';
       case 3: return '689cef0d003da89eebea';
       case 2: return '689cef3200167375be28';
       case 1: return '689cef460005804b0484';
-      default: return '689cef460005804b0484'; // Default to year 1
+      default: return '689cef460005804b0484'; 
     }
   };
 
   const fetchAllMembers = async () => {
     setLoading(true);
     try {
-      // Fetch all member collections
+
       const [res4, res3, res2, res1] = await Promise.all([
-        databases.listDocuments<Member>(DB_ID, '689cefca0001449d5204'), // Year 4
-        databases.listDocuments<Member>(DB_ID, '689cef0d003da89eebea'), // Year 3
-        databases.listDocuments<Member>(DB_ID, '689cef3200167375be28'), // Year 2
-        databases.listDocuments<Member>(DB_ID, '689cef460005804b0484')  // Year 1
+        databases.listDocuments<Member>(DB_ID, '689cefca0001449d5204'), 
+        databases.listDocuments<Member>(DB_ID, '689cef0d003da89eebea'), 
+        databases.listDocuments<Member>(DB_ID, '689cef3200167375be28'), 
+        databases.listDocuments<Member>(DB_ID, '689cef460005804b0484') 
       ]);
 
-      // Add year property to each member and organize by year
+    
       const year4Members = res4.documents.map(member => ({ ...member, year: 4 }));
       const year3Members = res3.documents.map(member => ({ ...member, year: 3 }));
       const year2Members = res2.documents.map(member => ({ ...member, year: 2 }));
@@ -169,18 +169,16 @@ const AdminPanel: React.FC = () => {
     }));
   };
 
-  // Handle tech stack input with better comma support
   const handleTechStackInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
-    console.log('Raw tech stack input:', value); // Debug log
+    console.log('Raw tech stack input:', value); 
     handleTechStackChange(value);
   };
 
-  // Handle Enter key to add tech stack items
   const handleTechStackKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
       e.preventDefault();
-      // Add current input as a tech stack item
+  
       const currentInput = (e.target as HTMLInputElement).value;
       const lastCommaIndex = currentInput.lastIndexOf(',');
       const newTech = currentInput.substring(lastCommaIndex + 1).trim();
@@ -192,7 +190,6 @@ const AdminPanel: React.FC = () => {
     }
   };
 
-  // Alternative method: Add individual tech stack items
   const [tempTech, setTempTech] = useState('');
   
   const addTechStackItem = () => {

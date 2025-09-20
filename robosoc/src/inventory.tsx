@@ -60,13 +60,13 @@ const Inventory: React.FC = () => {
   return (
     <>
       <SEO
-        title="Campaigns - RoboSoc NITH | Our Initiatives & Events"
-        description="Explore RoboSoc NITH's ongoing campaigns, initiatives, and events. Join our mission to promote robotics education and innovation at National Institute of Technology Hamirpur."
-        keywords="RoboSoc campaigns, NIT Hamirpur events, robotics initiatives, technology events, student activities, innovation programs, robotics awareness"
-        url="/Campaign's"
+        title="Events - RoboSoc NITH | Our Initiatives & Events"
+        description="Explore RoboSoc NITH's ongoing Events, initiatives, and events. Join our mission to promote robotics education and innovation at National Institute of Technology Hamirpur."
+        keywords="RoboSoc Events, NIT Hamirpur events, robotics initiatives, technology events, student activities, innovation programs, robotics awareness"
+        url="/Events"
         structuredData={breadcrumbSchema([
           { name: 'Home', url: 'https://robosoc-nith.com/' },
-          { name: 'Campaigns', url: "https://robosoc-nith.com/Campaign's" }
+          { name: 'Events', url: "https://robosoc-nith.com/Events" }
         ])}
       />
 
@@ -74,7 +74,7 @@ const Inventory: React.FC = () => {
         <div className="w-full max-w-md">
           <div ref={titleRef} className="text-center mb-8">
             <h1 className="text-3xl sm:text-4xl font-bold text-white tracking-wide">
-              Campaign's
+              Events
             </h1>
           </div>
 

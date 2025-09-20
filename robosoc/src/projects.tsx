@@ -285,6 +285,7 @@ const projects = [
 ];
 
 
+
 const Projects: React.FC = () => {
   const titleRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<HTMLDivElement>(null);
@@ -353,12 +354,12 @@ const Projects: React.FC = () => {
       
         <div ref={titleRef} className="max-w-6xl mx-auto mb-6 sm:mb-8 lg:mb-12 pt-4 px-3 sm:px-4 md:px-5">
           <div className='flex items-center w-full gap-2 sm:gap-4 mb-6 sm:mb-8 lg:mb-10'>
-            <div className='bg-white h-6 sm:h-8 md:h-12 lg:h-16 flex-1 rounded-sm shadow-md md:shadow-lg'></div>
+            {/* <div className='bg-white h-6 sm:h-8 md:h-12 lg:h-16 flex-1 rounded-sm shadow-md md:shadow-lg'></div> */}
             <h1 className='text-xl sm:text-3xl md:text-5xl lg:text-7xl xl:text-8xl font-bold text-white tracking-wider text-center px-2 sm:px-4 lg:px-6'>
               PROJECTS
             </h1>
-            <div className='bg-white h-6 sm:h-8 md:h-12 lg:h-16 w-12 sm:w-16 md:w-24 lg:w-32 rounded-sm shadow-md md:shadow-lg flex items-center justify-center'>
-            </div>
+            {/* <div className='bg-white h-6 sm:h-8 md:h-12 lg:h-16 w-12 sm:w-16 md:w-24 lg:w-32 rounded-sm shadow-md md:shadow-lg flex items-center justify-center'>
+            </div> */}
           </div>
         </div>
 
