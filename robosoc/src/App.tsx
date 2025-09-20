@@ -5,7 +5,7 @@ import Footer from "./components/footer";
 import SmoothScrollProvider from "./components/SmoothScrollProvider";
 import Home from "./home";
 import AboutUs from "./aboutus";
-import Projects from "./Projects";
+import Projects from "./projects";
 import Achievements from "./achievement";
 import Inventory from "./inventory";
 import ContactUs from "./contactus";
