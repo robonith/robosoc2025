@@ -47,7 +47,7 @@ const Header: React.FC = () => {
                 Achievements
               </Link>
             </li>
-            <li>
+            {/* <li>
               <Link
                 to="/Events"
                 onClick={scrollToTop}
@@ -55,7 +55,7 @@ const Header: React.FC = () => {
               >
                 Events
               </Link>
-            </li>
+            </li> */}
             <li>
               <Link
                 to="/members"
@@ -65,7 +65,7 @@ const Header: React.FC = () => {
                 Members
               </Link>
             </li>
-            <li>
+            {/* <li>
               <Link
                 to="/merch"
                 onClick={scrollToTop}
@@ -73,7 +73,7 @@ const Header: React.FC = () => {
               >
                 Merch
               </Link>
-            </li>
+            </li> */}
             <li>
               <Link
                 to="/about"
@@ -115,15 +115,15 @@ const Header: React.FC = () => {
             <li>
               <Link to="/achievements" onClick={scrollToTop} className="text-gray-200 hover:text-white text-sm">Achievements</Link>
             </li>
-            <li>
+            {/* <li>
               <Link to="/Events" onClick={scrollToTop} className="text-gray-200 hover:text-white text-sm">Events</Link>
-            </li>
+            </li> */}
             <li>
               <Link to="/members" onClick={scrollToTop} className="text-gray-200 hover:text-white text-sm">Members</Link>
             </li>
-            <li>
+            {/* <li>
               <Link to="/merch" onClick={scrollToTop} className="text-gray-200 hover:text-white text-sm">Merch</Link>
-            </li>
+            </li> */}
             <li>
               <Link to="/about" onClick={scrollToTop} className="text-gray-200 hover:text-white text-sm">About Us</Link>
             </li>
