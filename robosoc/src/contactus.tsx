@@ -101,106 +101,110 @@ const ContactUs: React.FC = () => {
       <div className="contact-us min-h-screen py-10 lg:py-16 px-4 sm:px-6 lg:px-8 relative bg-black">
         <div className="relative z-10 max-w-7xl mx-auto">
 
+          {/* Header Section */}
           <div ref={titleRef} className="mb-12 lg:mb-20">
             <div className='flex items-center w-full gap-4'>
-              <div className='bg-white h-12 flex-1 rounded-sm shadow-lg'></div>
-              <h1 className='text-3xl sm:text-5xl lg:text-8xl font-bold text-white tracking-wider text-center px-4'>
-                CONTACT US
+              <div className='bg-white/20 h-[2px] flex-1 shadow-lg'></div>
+              <h1 className='text-3xl sm:text-5xl lg:text-7xl font-bold text-white tracking-tighter text-center px-4'>
+                GET IN TOUCH
               </h1>
-              <div className='bg-white h-12 w-24 rounded-sm shadow-lg'></div>
+              <div className='bg-white h-8 w-8 rounded-full border-4 border-white/20'></div>
             </div>
           </div>
 
           <div className="flex flex-col lg:flex-row gap-8 lg:items-stretch">
             
+            {/* Info Panel */}
             <div ref={contactInfoRef} className="flex-1">
-              <div className="bg-white/5 backdrop-blur-md rounded-2xl p-6 lg:p-10 border border-white/10 h-full">
-                <h2 className="text-2xl lg:text-4xl font-bold text-white mb-6">Let's Talk</h2>
-                <p className="text-gray-400 text-lg mb-10">
-                  Have a project in mind or want to join the club? Fill out the form or use our direct contact info below.
-                </p>
+              <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 lg:p-10 border border-white/10 h-full flex flex-col justify-between">
+                <div>
+                  <h2 className="text-2xl lg:text-4xl font-bold text-white mb-6 tracking-tight">System.Contact()</h2>
+                  <p className="text-gray-400 text-lg mb-10 leading-relaxed">
+                    Ready to build something legendary? Reach out for collaborations, project inquiries, or club membership details.
+                  </p>
 
-                <div className="space-y-8">
-                  <div className="flex items-center space-x-4">
-                    <div className="w-12 h-12 bg-white/10 rounded-lg flex items-center justify-center border border-white/20">
-                      <span className="text-xl">📍</span>
+                  <div className="space-y-10">
+                    <div className="group">
+                      <p className="text-gray-500 text-xs uppercase tracking-[0.3em] mb-2 font-bold">Base of Operations</p>
+                      <p className="text-white text-lg font-medium">NIT Hamirpur</p>
+                      <p className="text-gray-400">Himachal Pradesh, 177005</p>
                     </div>
-                    <div>
-                      <p className="text-white font-bold">Our Location</p>
-                      <p className="text-gray-400">NIT Hamirpur, Himachal Pradesh</p>
-                    </div>
-                  </div>
 
-                  <div className="flex items-center space-x-4">
-                    <div className="w-12 h-12 bg-white/10 rounded-lg flex items-center justify-center border border-white/20">
-                      <span className="text-xl">📧</span>
-                    </div>
-                    <div>
-                      <p className="text-white font-bold">Email Us</p>
-                      <a href="mailto:robonith@nith.ac.in" className="text-gray-400 hover:text-white transition-colors">
+                    <div className="group">
+                      <p className="text-gray-500 text-xs uppercase tracking-[0.3em] mb-2 font-bold">Direct Channel</p>
+                      <a href="mailto:robonith@nith.ac.in" className="text-white text-xl font-medium hover:text-gray-300 underline underline-offset-8 decoration-white/20 transition-all">
                         robonith@nith.ac.in
                       </a>
                     </div>
                   </div>
                 </div>
 
-                <div ref={socialRef} className="flex gap-4 mt-12 pt-8 border-t border-white/10">
-                   <p className="text-gray-500 text-sm tracking-widest uppercase">Follow Us: LinkedIn • Instagram • GitHub</p>
+                <div ref={socialRef} className="mt-12 pt-8 border-t border-white/5">
+                    <div className="flex flex-wrap gap-x-6 gap-y-2">
+                      {['LinkedIn', 'Instagram', 'GitHub'].map((social) => (
+                        <span key={social} className="text-white text-xs font-bold tracking-widest uppercase hover:text-gray-400 cursor-pointer transition-colors">
+                          {social}
+                        </span>
+                      ))}
+                    </div>
                 </div>
               </div>
             </div>
 
-            <div className="flex-1">
+            {/* Form Panel */}
+            <div className="flex-[1.2]">
               <form 
                 ref={formRef} 
                 onSubmit={handleSubmit} 
-                className="bg-white/5 backdrop-blur-md rounded-2xl p-6 lg:p-10 border border-white/20 flex flex-col gap-6"
+                className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 lg:p-10 border border-white/10 flex flex-col gap-6"
               >
-                <div>
-                  <label className="block text-white font-medium mb-2 text-sm uppercase tracking-wider">Full Name</label>
-                  <input
-                    type="text"
-                    name="from_name"
-                    value={formData.from_name}
-                    onChange={handleInputChange}
-                    required
-                    className="w-full px-4 py-4 bg-white/10 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white/30 transition-all"
-                    placeholder="Enter your name"
-                  />
-                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-gray-400 font-bold mb-2 text-[10px] uppercase tracking-[0.2em]">Identification</label>
+                    <input
+                      type="text"
+                      name="from_name"
+                      value={formData.from_name}
+                      onChange={handleInputChange}
+                      required
+                      className="w-full px-4 py-4 bg-white/5 border border-white/10 rounded-lg text-white placeholder-gray-600 focus:outline-none focus:border-white/40 transition-all"
+                      placeholder="Your Name"
+                    />
+                  </div>
 
-                <div>
-                  <label className="block text-white font-medium mb-2 text-sm uppercase tracking-wider">Email Address</label>
-                  <input
-                    type="email"
-                    name="email_id"
-                    value={formData.email_id}
-                    onChange={handleInputChange}
-                    required
-                    className="w-full px-4 py-4 bg-white/10 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white/30 transition-all"
-                    placeholder="name@nith.ac.in"
-                  />
+                  <div>
+                    <label className="block text-gray-400 font-bold mb-2 text-[10px] uppercase tracking-[0.2em]">Return Address</label>
+                    <input
+                      type="email"
+                      name="email_id"
+                      value={formData.email_id}
+                      onChange={handleInputChange}
+                      required
+                      className="w-full px-4 py-4 bg-white/5 border border-white/10 rounded-lg text-white placeholder-gray-600 focus:outline-none focus:border-white/40 transition-all"
+                      placeholder="Email"
+                    />
+                  </div>
                 </div>
 
                 <div className="flex-1 flex flex-col">
-                  <label className="block text-white font-medium mb-2 text-sm uppercase tracking-wider">Message</label>
+                  <label className="block text-gray-400 font-bold mb-2 text-[10px] uppercase tracking-[0.2em]">Transmission Data</label>
                   <textarea
                     name="message"
                     value={formData.message}
                     onChange={handleInputChange}
                     required
-                    rows={5}
-                    className="w-full flex-1 px-4 py-4 bg-white/10 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white/30 transition-all resize-none"
-                    placeholder="What would you like to discuss?"
+                    rows={6}
+                    className="w-full flex-1 px-4 py-4 bg-white/5 border border-white/10 rounded-lg text-white placeholder-gray-600 focus:outline-none focus:border-white/40 transition-all resize-none"
+                    placeholder="Message Body..."
                   />
                 </div>
 
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full py-4 bg-white text-black font-black uppercase tracking-[0.2em] rounded-xl hover:bg-black hover:text-white border-2 border-transparent hover:border-white transition-all duration-300 disabled:opacity-50"
+                  className="w-full py-5 bg-white text-black font-black uppercase tracking-[0.3em] text-xs rounded-lg hover:bg-transparent hover:text-white border border-white transition-all duration-500 disabled:opacity-50 group overflow-hidden relative"
                 >
-                  {isSubmitting ? 'Sending...' : 'Send Message'}
+                  <span className="relative z-10">{isSubmitting ? 'Processing...' : 'Execute Transmission'}</span>
                 </button>
               </form>
             </div>
