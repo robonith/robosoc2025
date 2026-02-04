@@ -120,7 +120,7 @@ const ContactUs: React.FC = () => {
                 <div>
                   <h2 className="text-2xl lg:text-4xl font-bold text-white mb-6 tracking-tight">System.Contact()</h2>
                   <p className="text-gray-400 text-lg mb-10 leading-relaxed">
-                    Ready to build something legendary? Reach out for collaborations, project inquiries, or  membership details.
+                    Ready to build something legendary? Reach out for collaborations, project inquiries, or membership details.
                   </p>
 
                   <div className="space-y-10">
@@ -140,12 +140,23 @@ const ContactUs: React.FC = () => {
                 </div>
 
                 <div ref={socialRef} className="mt-12 pt-8 border-t border-white/5">
-                    <div className="flex flex-wrap gap-x-6 gap-y-2">
-                      {['LinkedIn', 'Instagram', 'GitHub'].map((social) => (
-                        <span key={social} className="text-white text-xs font-bold tracking-widest uppercase hover:text-gray-400 cursor-pointer transition-colors">
-                          {social}
-                        </span>
-                      ))}
+                    <div className="flex flex-wrap gap-x-8 gap-y-2">
+                      <a 
+                        href="https://www.instagram.com/robosocnith?igsh=OW10aGFlejY0ejNq" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="text-white text-xs font-bold tracking-widest uppercase hover:text-gray-400 transition-colors"
+                      >
+                        Instagram
+                      </a>
+                      <a 
+                        href="https://github.com/robonith" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="text-white text-xs font-bold tracking-widest uppercase hover:text-gray-400 transition-colors"
+                      >
+                        GitHub
+                      </a>
                     </div>
                 </div>
               </div>
