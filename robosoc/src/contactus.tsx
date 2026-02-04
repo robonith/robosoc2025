@@ -120,7 +120,7 @@ const ContactUs: React.FC = () => {
                 <div>
                   <h2 className="text-2xl lg:text-4xl font-bold text-white mb-6 tracking-tight">System.Contact()</h2>
                   <p className="text-gray-400 text-lg mb-10 leading-relaxed">
-                    Ready to build something legendary? Reach out for collaborations, project inquiries, or club membership details.
+                    Ready to build something legendary? Reach out for collaborations, project inquiries, or  membership details.
                   </p>
 
                   <div className="space-y-10">
