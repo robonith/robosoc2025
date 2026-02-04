@@ -137,8 +137,8 @@ const ContactUs: React.FC = () => {
                     </div>
                     <div>
                       <p className="text-white font-bold">Email Us</p>
-                      <a href="mailto:robosoc@nith.ac.in" className="text-gray-400 hover:text-white transition-colors">
-                        robosoc@nith.ac.in
+                      <a href="mailto:robonith@nith.ac.in" className="text-gray-400 hover:text-white transition-colors">
+                        robonith@nith.ac.in
                       </a>
                     </div>
                   </div>
