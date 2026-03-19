@@ -18,7 +18,7 @@ export const useLenis = () => {
   }, []);
 
   const scrollToElement = useCallback((selector: string, offset: number = 0) => {
-    const element = document.querySelector(selector);
+    const element = document.querySelector(selector) as HTMLElement | null;
     const lenis = getLenis();
 
     if (element && lenis) {
