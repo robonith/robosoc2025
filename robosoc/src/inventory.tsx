@@ -7,9 +7,9 @@ import { breadcrumbSchema } from './utils/structuredData'
 gsap.registerPlugin(ScrollTrigger)
 
 const POSTER =
-  'https://res.cloudinary.com/dkqaesntp/image/upload/v1756899649/Biggest_Fresher_Workshop_1_nuy4sx.png'
+  'https://res.cloudinary.com/dfo78d53k/image/upload/v1773897645/WhatsApp_Image_2026-03-18_at_2.47.38_PM_kmcxnh.jpg'
 const GOOGLE_FORM =
-  'https://docs.google.com/forms/d/e/1FAIpQLScDfk7nYUGrsX7tpfXm16PEA8f_0fzZfj1yLF0QPSpJWfh5cQ/viewform'
+  'https://forms.gle/hJkhPdoWp6Pmhaeq5'
 
 const Inventory: React.FC = () => {
   const [open, setOpen] = useState(false)
