@@ -3,9 +3,15 @@ import Lenis from '@studio-freight/lenis';
 
 export const useLenis = () => {
   
+  const getLenis = (): Lenis | undefined => {
+    return (window as any).lenis;
+  };
+
   const scrollToTop = useCallback(() => {
-    if (window.lenis) {
-      window.lenis.scrollTo(0, { immediate: false });
+    const lenis = getLenis();
+
+    if (lenis) {
+      lenis.scrollTo(0, { immediate: false });
     } else {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
@@ -13,27 +19,31 @@ export const useLenis = () => {
 
   const scrollToElement = useCallback((selector: string, offset: number = 0) => {
     const element = document.querySelector(selector);
-    if (element && window.lenis) {
-      window.lenis.scrollTo(element, { offset });
+    const lenis = getLenis();
+
+    if (element && lenis) {
+      lenis.scrollTo(element, { offset });
     } else if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
   }, []);
 
   const scrollTo = useCallback((target: number, options?: { immediate?: boolean; duration?: number }) => {
-    if (window.lenis) {
-      window.lenis.scrollTo(target, options);
+    const lenis = getLenis();
+
+    if (lenis) {
+      lenis.scrollTo(target, options);
     } else {
       window.scrollTo({ top: target, behavior: 'smooth' });
     }
   }, []);
 
   const stopScroll = useCallback(() => {
-    window.lenis?.stop();
+    getLenis()?.stop();
   }, []);
 
   const startScroll = useCallback(() => {
-    window.lenis?.start();
+    getLenis()?.start();
   }, []);
 
   return {
@@ -44,11 +54,5 @@ export const useLenis = () => {
     startScroll,
   };
 };
-
-declare global {
-  interface Window {
-    lenis?: Lenis;
-  }
-}
 
 export default useLenis;
