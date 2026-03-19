@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import Lenis from '@studio-freight/lenis';
+import Lenis from 'lenis';
 
 export const useLenis = () => {
   
